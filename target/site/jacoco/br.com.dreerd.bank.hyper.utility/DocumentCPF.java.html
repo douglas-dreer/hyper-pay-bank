@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DocumentCPF.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hyper</a> &gt; <a href="index.source.html" class="el_package">br.com.dreerd.bank.hyper.utility</a> &gt; <span class="el_source">DocumentCPF.java</span></div><h1>DocumentCPF.java</h1><pre class="source lang-java linenums">package br.com.dreerd.bank.hyper.utility;
+
+import br.com.dreerd.bank.hyper.exception.DocumentException;
+import lombok.extern.log4j.Log4j2;
+
+import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+<span class="fc" id="L11">@Log4j2</span>
+<span class="nc" id="L12">public final class DocumentCPF {</span>
+<span class="fc" id="L13">    private static final Pattern CPF_PATTERN = Pattern.compile(&quot;\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}&quot;);</span>
+
+<span class="fc" id="L15">    private static final Set&lt;String&gt; BLACKLIST = generateBlacklist();</span>
+
+    public static boolean isValidCPF(String cpf) {
+<span class="pc bpc" id="L18" title="2 of 4 branches missed.">        if (cpf == null || cpf.isBlank()) {</span>
+<span class="nc" id="L19">            return false;</span>
+        }
+
+        try {
+<span class="fc" id="L23">            String cleanedCpf = cleanCPF(cpf);</span>
+
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">            if (BLACKLIST.contains(cleanedCpf)) {</span>
+<span class="nc" id="L26">                return false;</span>
+            }
+
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">            if (cleanedCpf.length() != 11) {</span>
+<span class="nc" id="L30">                return false;</span>
+            }
+
+<span class="fc" id="L33">            return isValidDigits(cleanedCpf);</span>
+
+<span class="nc" id="L35">        } catch (Exception e) {</span>
+<span class="nc" id="L36">            throw new DocumentException(cpf, &quot;CPF&quot;, &quot;Error validating CPF: &quot; + e.getMessage(), e);</span>
+        }
+    }
+
+    private static String cleanCPF(String cpf) {
+<span class="fc" id="L41">        return cpf.replaceAll(&quot;\\D&quot;, &quot;&quot;); // Remove todos os caracteres não numéricos</span>
+    }
+
+    private static boolean isValidDigits(String cpf) {
+<span class="fc" id="L45">        int firstDigit = calculateDigit(cpf, 9);</span>
+<span class="fc" id="L46">        int secondDigit = calculateDigit(cpf, 10);</span>
+
+<span class="fc" id="L48">        String calculatedDigits = String.format(&quot;%d%d&quot;, firstDigit, secondDigit);</span>
+<span class="fc" id="L49">        String cpfDigits = cpf.substring(9);</span>
+
+<span class="fc" id="L51">        return calculatedDigits.equals(cpfDigits);</span>
+    }
+
+    private static int calculateDigit(String cpf, int length) {
+<span class="fc" id="L55">        int sum = 0;</span>
+<span class="fc" id="L56">        int multiplier = length + 1;</span>
+
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L59">            sum += (cpf.charAt(i) - '0') * multiplier--;</span>
+        }
+
+<span class="fc" id="L62">        int remainder = sum % 11;</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        return remainder &lt; 2 ? 0 : 11 - remainder;</span>
+    }
+
+    private static Set&lt;String&gt; generateBlacklist() {
+<span class="fc" id="L67">        return IntStream.rangeClosed(0, 9)</span>
+<span class="fc" id="L68">                .mapToObj(i -&gt; String.format(&quot;%03d%03d%03d%02d&quot;, i, i, i, i))</span>
+<span class="fc" id="L69">                .collect(Collectors.toSet());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

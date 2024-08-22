@@ -1,0 +1,6 @@
+projectKey=Bank-Hyper
+serverUrl=http://localhost:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://localhost:9000/dashboard?id=Bank-Hyper
+ceTaskId=8e5e54bb-d89d-4b69-b5f2-136b0f265a62
+ceTaskUrl=http://localhost:9000/api/ce/task?id=8e5e54bb-d89d-4b69-b5f2-136b0f265a62

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Account.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hyper</a> &gt; <a href="index.source.html" class="el_package">br.com.dreerd.bank.hyper.entity</a> &gt; <span class="el_source">Account.java</span></div><h1>Account.java</h1><pre class="source lang-java linenums">package br.com.dreerd.bank.hyper.entity;
+
+import br.com.dreerd.bank.hyper.entity.common.BaseEntity;
+import br.com.dreerd.bank.hyper.model.AccountDTO;
+import br.com.dreerd.bank.hyper.utility.Converter;
+import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Objects;
+import java.util.UUID;
+
+<span class="pc bpc" id="L18" title="59 of 60 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
+@Entity
+@Table(name = &quot;TBL0005_ACCOUNTS&quot;)
+<span class="pc" id="L21">@Data</span>
+<span class="pc" id="L22">@Builder</span>
+public class Account extends BaseEntity&lt;AccountDTO&gt; implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+<span class="fc" id="L26">    private UUID id;</span>
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+<span class="fc" id="L29">    private Person person;</span>
+
+<span class="fc" id="L31">    private Long number;</span>
+<span class="fc" id="L32">    private BigDecimal balance;</span>
+
+    @Column(name = &quot;created_at&quot;)
+    @CreationTimestamp
+<span class="fc" id="L36">    private LocalDateTime createdAt;</span>
+
+    @Column(name = &quot;updated_at&quot;)
+    @CreationTimestamp
+<span class="fc" id="L40">    private LocalDateTime updatedAt;</span>
+
+<span class="fc" id="L42">    private boolean isActive = true;</span>
+
+    public Account() {
+<span class="fc" id="L45">        super(AccountDTO.class);</span>
+<span class="fc" id="L46">    }</span>
+
+    public Account(UUID id, Person person, Long number, BigDecimal balance, LocalDateTime createdAt, LocalDateTime updatedAt, boolean isActive) {
+<span class="fc" id="L49">        super(AccountDTO.class);</span>
+<span class="fc" id="L50">        this.id = id;</span>
+<span class="fc" id="L51">        this.person = person;</span>
+<span class="fc" id="L52">        this.number = number;</span>
+<span class="fc" id="L53">        this.balance = balance;</span>
+<span class="fc" id="L54">        this.createdAt = createdAt;</span>
+<span class="fc" id="L55">        this.updatedAt = updatedAt;</span>
+<span class="fc" id="L56">        this.isActive = isActive;</span>
+<span class="fc" id="L57">    }</span>
+
+    public Account(Long number, Person person, BigDecimal balance) {
+<span class="fc" id="L60">        super(AccountDTO.class);</span>
+<span class="fc" id="L61">        this.person = person;</span>
+<span class="fc" id="L62">        this.number = number;</span>
+<span class="fc" id="L63">        this.balance = balance;</span>
+<span class="fc" id="L64">    }</span>
+
+    public void updateFields(AccountDTO newItem) {
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        this.balance = !Objects.equals(balance, newItem.getBalance()) ? newItem.getBalance() : balance;</span>
+<span class="fc" id="L68">    }</span>
+
+    @Override
+    public AccountDTO toDTO() {
+<span class="fc" id="L72">        return Converter.convertTo(this, AccountDTO.class);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

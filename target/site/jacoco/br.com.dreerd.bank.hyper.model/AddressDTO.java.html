@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddressDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hyper</a> &gt; <a href="index.source.html" class="el_package">br.com.dreerd.bank.hyper.model</a> &gt; <span class="el_source">AddressDTO.java</span></div><h1>AddressDTO.java</h1><pre class="source lang-java linenums">package br.com.dreerd.bank.hyper.model;
+
+import br.com.dreerd.bank.hyper.entity.Address;
+import br.com.dreerd.bank.hyper.enums.AddressType;
+import br.com.dreerd.bank.hyper.model.common.BaseModel;
+import br.com.dreerd.bank.hyper.utility.Converter;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+<span class="nc bnc" id="L14" title="All 112 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
+<span class="pc" id="L15">@Data</span>
+<span class="pc" id="L16">@Builder</span>
+public class AddressDTO extends BaseModel&lt;Address&gt; {
+<span class="fc" id="L18">    private UUID id;</span>
+<span class="fc" id="L19">    private AddressType addressType;</span>
+<span class="fc" id="L20">    private String street;</span>
+<span class="fc" id="L21">    private String number;</span>
+<span class="fc" id="L22">    private String complement;</span>
+<span class="fc" id="L23">    private String neighborhood;</span>
+<span class="fc" id="L24">    private String city;</span>
+<span class="fc" id="L25">    private String state;</span>
+<span class="fc" id="L26">    private String postalCode;</span>
+<span class="fc" id="L27">    private String country;</span>
+
+<span class="fc" id="L29">    private LocalDateTime createdAt;</span>
+<span class="fc" id="L30">    private LocalDateTime updatedAt;</span>
+<span class="fc" id="L31">    private boolean isMain;</span>
+<span class="pc" id="L32">    private boolean isActive = true;</span>
+
+    public AddressDTO() {
+<span class="fc" id="L35">        super(Address.class);</span>
+<span class="fc" id="L36">    }</span>
+
+    public AddressDTO(UUID id, AddressType addressType, String street, String number, String complement, String neighborhood, String city, String state, String postalCode, String country) {
+<span class="nc" id="L39">        super(Address.class);</span>
+<span class="nc" id="L40">        this.id = id;</span>
+<span class="nc" id="L41">        this.addressType = addressType;</span>
+<span class="nc" id="L42">        this.street = street;</span>
+<span class="nc" id="L43">        this.number = number;</span>
+<span class="nc" id="L44">        this.complement = complement;</span>
+<span class="nc" id="L45">        this.neighborhood = neighborhood;</span>
+<span class="nc" id="L46">        this.city = city;</span>
+<span class="nc" id="L47">        this.state = state;</span>
+<span class="nc" id="L48">        this.postalCode = postalCode;</span>
+<span class="nc" id="L49">        this.country = country;</span>
+<span class="nc" id="L50">    }</span>
+
+    public AddressDTO(UUID id, AddressType addressType, String street, String number, String complement, String neighborhood, String city, String state, String postalCode, String country, LocalDateTime createdAt, LocalDateTime updatedAt, boolean isMain, boolean isActive) {
+<span class="fc" id="L53">        super(Address.class);</span>
+<span class="fc" id="L54">        this.id = id;</span>
+<span class="fc" id="L55">        this.addressType = addressType;</span>
+<span class="fc" id="L56">        this.street = street;</span>
+<span class="fc" id="L57">        this.number = number;</span>
+<span class="fc" id="L58">        this.complement = complement;</span>
+<span class="fc" id="L59">        this.neighborhood = neighborhood;</span>
+<span class="fc" id="L60">        this.city = city;</span>
+<span class="fc" id="L61">        this.state = state;</span>
+<span class="fc" id="L62">        this.postalCode = postalCode;</span>
+<span class="fc" id="L63">        this.country = country;</span>
+<span class="fc" id="L64">        this.createdAt = createdAt;</span>
+<span class="fc" id="L65">        this.updatedAt = updatedAt;</span>
+<span class="fc" id="L66">        this.isMain = isMain;</span>
+<span class="fc" id="L67">        this.isActive = isActive;</span>
+<span class="fc" id="L68">    }</span>
+
+    @Override
+    public Address toEntity() {
+<span class="fc" id="L72">        return Converter.convertTo(this, Address.class);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DocumentDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hyper</a> &gt; <a href="index.source.html" class="el_package">br.com.dreerd.bank.hyper.model</a> &gt; <span class="el_source">DocumentDTO.java</span></div><h1>DocumentDTO.java</h1><pre class="source lang-java linenums">package br.com.dreerd.bank.hyper.model;
+
+import br.com.dreerd.bank.hyper.entity.Document;
+import br.com.dreerd.bank.hyper.enums.DocumentType;
+import br.com.dreerd.bank.hyper.exception.DocumentException;
+import br.com.dreerd.bank.hyper.model.common.BaseModel;
+import br.com.dreerd.bank.hyper.utility.Converter;
+import br.com.dreerd.bank.hyper.utility.DocumentCNPJ;
+import br.com.dreerd.bank.hyper.utility.DocumentCPF;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.extern.log4j.Log4j2;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+<span class="nc bnc" id="L18" title="All 52 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
+<span class="pc" id="L19">@Data</span>
+<span class="pc" id="L20">@Builder</span>
+<span class="fc" id="L21">@Log4j2</span>
+public class DocumentDTO extends BaseModel&lt;Document&gt; {
+<span class="fc" id="L23">    private UUID id;</span>
+<span class="fc" id="L24">    private DocumentType documentType;</span>
+<span class="fc" id="L25">    private String value;</span>
+<span class="fc" id="L26">    private LocalDateTime createdAt;</span>
+<span class="fc" id="L27">    private LocalDateTime updatedAt;</span>
+<span class="fc" id="L28">    private boolean isActive;</span>
+
+    protected DocumentDTO() {
+<span class="fc" id="L31">        super(Document.class);</span>
+<span class="fc" id="L32">    }</span>
+
+    public DocumentDTO(UUID id, DocumentType documentType, String value) {
+<span class="nc" id="L35">        super(Document.class);</span>
+<span class="nc" id="L36">        this.id = id;</span>
+<span class="nc" id="L37">        this.documentType = documentType;</span>
+<span class="nc" id="L38">        this.value = value;</span>
+<span class="nc" id="L39">    }</span>
+
+    public DocumentDTO(UUID id, DocumentType documentType, String value, LocalDateTime createdAt, LocalDateTime updatedAt, boolean isActive) {
+<span class="fc" id="L42">        super(Document.class);</span>
+<span class="fc" id="L43">        this.id = id;</span>
+<span class="fc" id="L44">        this.documentType = documentType;</span>
+<span class="fc" id="L45">        this.value = value;</span>
+<span class="fc" id="L46">        this.createdAt = createdAt;</span>
+<span class="fc" id="L47">        this.updatedAt = updatedAt;</span>
+<span class="fc" id="L48">        this.isActive = isActive;</span>
+<span class="fc" id="L49">    }</span>
+
+    @Override
+    public Document toEntity() {
+<span class="fc" id="L53">        return Converter.convertTo(this, Document.class);</span>
+    }
+
+    public boolean isDocumentValid(String document, DocumentType documentType) {
+<span class="fc" id="L57">        boolean result = false;</span>
+        try {
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">            if (!DocumentType.check(documentType.name())) {</span>
+<span class="nc" id="L60">                throw new DocumentException(document, documentType, &quot;Document type not avaliable&quot;);</span>
+            }
+
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            if (documentType.equals(DocumentType.CPF)) {</span>
+<span class="fc" id="L64">                result =  DocumentCPF.isValidCPF(document);</span>
+            }
+
+<span class="fc bfc" id="L67" title="All 2 branches covered.">            if (documentType.equals(DocumentType.CNPJ)) {</span>
+<span class="fc" id="L68">                result = DocumentCNPJ.isValidCNPJ(document);</span>
+            }
+
+<span class="fc" id="L71">            return result;</span>
+<span class="nc" id="L72">        } catch (DocumentException e) {</span>
+<span class="nc" id="L73">            log.error(e);</span>
+<span class="nc" id="L74">            return false;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

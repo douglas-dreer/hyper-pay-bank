@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseEntity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hyper</a> &gt; <a href="index.source.html" class="el_package">br.com.dreerd.bank.hyper.entity.common</a> &gt; <span class="el_source">BaseEntity.java</span></div><h1>BaseEntity.java</h1><pre class="source lang-java linenums">package br.com.dreerd.bank.hyper.entity.common;
+
+import br.com.dreerd.bank.hyper.utility.Converter;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
+
+import java.io.IOException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
+<span class="fc" id="L13">@AllArgsConstructor</span>
+@Getter
+<span class="fc" id="L15">@Log4j2</span>
+public abstract class BaseEntity&lt;T&gt; {
+    private Class&lt;T&gt; modelClass;
+
+<span class="fc" id="L19">    protected BaseEntity() {</span>
+<span class="fc" id="L20">        this.modelClass = getModelClass();</span>
+<span class="fc" id="L21">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    private Class&lt;T&gt; getModelClass() {
+<span class="fc" id="L25">        Type genericSuperclass = getClass().getGenericSuperclass();</span>
+<span class="pc bpc" id="L26" title="3 of 4 branches missed.">        while (!(genericSuperclass instanceof ParameterizedType) &amp;&amp; genericSuperclass != Object.class) {</span>
+<span class="nc" id="L27">            genericSuperclass = ((Class&lt;?&gt;) genericSuperclass).getGenericSuperclass();</span>
+        }
+
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        if (genericSuperclass instanceof ParameterizedType paramType) {</span>
+<span class="fc" id="L31">            return (Class&lt;T&gt;) paramType.getActualTypeArguments()[0];</span>
+        } else {
+<span class="nc" id="L33">            throw new IllegalArgumentException(&quot;Class is not parametrized with generic type&quot;);</span>
+        }
+    }
+
+    public T toDTO() {
+<span class="nc" id="L38">        return Converter.convertTo(this, modelClass);</span>
+    }
+
+    public String toJSON() throws JsonProcessingException {
+<span class="nc" id="L42">        return Converter.toJSON(this);</span>
+    }
+
+    public T toObject(String dados) throws IOException {
+<span class="nc" id="L46">        return Converter.toObject(dados, modelClass);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

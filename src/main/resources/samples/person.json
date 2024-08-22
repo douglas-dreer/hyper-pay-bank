@@ -1,0 +1,36 @@
+{
+  "name": "Douglas",
+  "surname": "Dreer",
+  "birthday": "1983-08-23",
+  "documents": [
+    {
+      "documentType": "CPF",
+      "value": "035.840.589-02"
+    }
+  ],
+  "addresses": [
+    {
+      "addressType": "RESIDENTIAL",
+      "street": "Rua Lazaro Zamenhof",
+      "number": "120",
+      "complement": null,
+      "neighborhood": "San Fernando",
+      "city": "Londrina",
+      "state": "Paraná",
+      "postalCode": "86040350",
+      "country": "Brazil",
+      "main": true
+    }
+  ],
+  "contacts": [
+    {
+      "type": "EMAIL",
+      "value": "usuario@email.com.br",
+      "main": true
+    },
+    {
+      "type": "MOBILE",
+      "value": "+55 (43) 9 99649-0584"
+    }
+  ]
+}

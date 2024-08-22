@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="1.18" tests="9" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sonar.projectName" value="&apos;Bank"/>
+    <property name="java.specification.version" value="22"/>
+    <property name="sonar.host.url" value="http://localhost:9000"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Volumes/HD EXTERNO/projetos/java/Hyper/target/test-classes:/Volumes/HD EXTERNO/projetos/java/Hyper/target/classes:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.3.1/spring-boot-starter-data-jpa-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.3.1/spring-boot-starter-aop-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-aop/6.1.10/spring-aop-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/aspectj/aspectjweaver/1.9.22/aspectjweaver-1.9.22.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.3.1/spring-boot-starter-jdbc-3.3.1.jar:/Users/douglasdreer/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-jdbc/6.1.10/spring-jdbc-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/hibernate/orm/hibernate-core/6.5.2.Final/hibernate-core-6.5.2.Final.jar:/Users/douglasdreer/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/douglasdreer/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/douglasdreer/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/douglasdreer/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/douglasdreer/.m2/repository/io/smallrye/jandex/3.1.2/jandex-3.1.2.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/douglasdreer/.m2/repository/net/bytebuddy/byte-buddy/1.14.17/byte-buddy-1.14.17.jar:/Users/douglasdreer/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/douglasdreer/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/douglasdreer/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/douglasdreer/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/douglasdreer/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/douglasdreer/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/douglasdreer/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/Users/douglasdreer/.m2/repository/org/springframework/data/spring-data-jpa/3.3.1/spring-data-jpa-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/data/spring-data-commons/3.3.1/spring-data-commons-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-orm/6.1.10/spring-orm-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-context/6.1.10/spring-context-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-tx/6.1.10/spring-tx-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-beans/6.1.10/spring-beans-6.1.10.jar:/Users/douglasdreer/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/douglasdreer/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-aspects/6.1.10/spring-aspects-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.3.1/spring-boot-starter-web-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.1/spring-boot-starter-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.1/spring-boot-starter-logging-3.3.1.jar:/Users/douglasdreer/.m2/repository/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.jar:/Users/douglasdreer/.m2/repository/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.jar:/Users/douglasdreer/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/Users/douglasdreer/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/Users/douglasdreer/.m2/repository/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.jar:/Users/douglasdreer/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.3.1/spring-boot-starter-json-3.3.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.1/jackson-datatype-jdk8-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.1/jackson-datatype-jsr310-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.1/jackson-module-parameter-names-2.17.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.3.1/spring-boot-starter-tomcat-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.25/tomcat-embed-core-10.1.25.jar:/Users/douglasdreer/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.25/tomcat-embed-el-10.1.25.jar:/Users/douglasdreer/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.25/tomcat-embed-websocket-10.1.25.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-web/6.1.10/spring-web-6.1.10.jar:/Users/douglasdreer/.m2/repository/io/micrometer/micrometer-observation/1.13.1/micrometer-observation-1.13.1.jar:/Users/douglasdreer/.m2/repository/io/micrometer/micrometer-commons/1.13.1/micrometer-commons-1.13.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-webmvc/6.1.10/spring-webmvc-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-expression/6.1.10/spring-expression-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-devtools/3.3.1/spring-boot-devtools-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot/3.3.1/spring-boot-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.1/spring-boot-autoconfigure-3.3.1.jar:/Users/douglasdreer/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/Users/douglasdreer/.m2/repository/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.1/spring-boot-starter-test-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-test/3.3.1/spring-boot-test-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.1/spring-boot-test-autoconfigure-3.3.1.jar:/Users/douglasdreer/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/douglasdreer/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/douglasdreer/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/douglasdreer/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/Users/douglasdreer/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/Users/douglasdreer/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/douglasdreer/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/Users/douglasdreer/.m2/repository/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.jar:/Users/douglasdreer/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/douglasdreer/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/Users/douglasdreer/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/douglasdreer/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/douglasdreer/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/douglasdreer/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/douglasdreer/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/Users/douglasdreer/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/douglasdreer/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/douglasdreer/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/Users/douglasdreer/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.17/byte-buddy-agent-1.14.17.jar:/Users/douglasdreer/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/douglasdreer/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/Users/douglasdreer/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/Users/douglasdreer/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-core/6.1.10/spring-core-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-jcl/6.1.10/spring-jcl-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-test/6.1.10/spring-test-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/Users/douglasdreer/.m2/repository/org/modelmapper/extensions/modelmapper-spring/3.2.0/modelmapper-spring-3.2.0.jar:/Users/douglasdreer/.m2/repository/org/modelmapper/modelmapper/3.2.0/modelmapper-3.2.0.jar:/Users/douglasdreer/.m2/repository/org/sonarsource/scanner/maven/sonar-maven-plugin/4.0.0.4121/sonar-maven-plugin-4.0.0.4121.jar:/Users/douglasdreer/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar:/Users/douglasdreer/.m2/repository/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.jar:/Users/douglasdreer/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/Users/douglasdreer/.m2/repository/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar:/Users/douglasdreer/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/Users/douglasdreer/.m2/repository/org/jetbrains/annotations/24.1.0/annotations-24.1.0.jar:/Users/douglasdreer/.m2/repository/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar:/Users/douglasdreer/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Sao_Paulo"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="22"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.boot.library.path" value="/Users/douglasdreer/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Volumes/HD EXTERNO/projetos/java/Hyper/target/surefire/surefirebooter-20240821235736461_3.jar /Volumes/HD EXTERNO/projetos/java/Hyper/target/surefire 2024-08-21T23-57-36_379-jvmRun1 surefire-20240821235736461_1tmp surefire_0-20240821235736461_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Volumes/HD EXTERNO/projetos/java/Hyper/target/test-classes:/Volumes/HD EXTERNO/projetos/java/Hyper/target/classes:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.3.1/spring-boot-starter-data-jpa-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.3.1/spring-boot-starter-aop-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-aop/6.1.10/spring-aop-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/aspectj/aspectjweaver/1.9.22/aspectjweaver-1.9.22.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.3.1/spring-boot-starter-jdbc-3.3.1.jar:/Users/douglasdreer/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-jdbc/6.1.10/spring-jdbc-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/hibernate/orm/hibernate-core/6.5.2.Final/hibernate-core-6.5.2.Final.jar:/Users/douglasdreer/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/douglasdreer/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/douglasdreer/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/douglasdreer/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/douglasdreer/.m2/repository/io/smallrye/jandex/3.1.2/jandex-3.1.2.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/douglasdreer/.m2/repository/net/bytebuddy/byte-buddy/1.14.17/byte-buddy-1.14.17.jar:/Users/douglasdreer/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/douglasdreer/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/douglasdreer/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/douglasdreer/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/douglasdreer/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/douglasdreer/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/douglasdreer/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/Users/douglasdreer/.m2/repository/org/springframework/data/spring-data-jpa/3.3.1/spring-data-jpa-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/data/spring-data-commons/3.3.1/spring-data-commons-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-orm/6.1.10/spring-orm-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-context/6.1.10/spring-context-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-tx/6.1.10/spring-tx-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-beans/6.1.10/spring-beans-6.1.10.jar:/Users/douglasdreer/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/douglasdreer/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-aspects/6.1.10/spring-aspects-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.3.1/spring-boot-starter-web-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.1/spring-boot-starter-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.1/spring-boot-starter-logging-3.3.1.jar:/Users/douglasdreer/.m2/repository/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.jar:/Users/douglasdreer/.m2/repository/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.jar:/Users/douglasdreer/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/Users/douglasdreer/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/Users/douglasdreer/.m2/repository/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.jar:/Users/douglasdreer/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.3.1/spring-boot-starter-json-3.3.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.1/jackson-datatype-jdk8-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.1/jackson-datatype-jsr310-2.17.1.jar:/Users/douglasdreer/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.1/jackson-module-parameter-names-2.17.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.3.1/spring-boot-starter-tomcat-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.25/tomcat-embed-core-10.1.25.jar:/Users/douglasdreer/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.25/tomcat-embed-el-10.1.25.jar:/Users/douglasdreer/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.25/tomcat-embed-websocket-10.1.25.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-web/6.1.10/spring-web-6.1.10.jar:/Users/douglasdreer/.m2/repository/io/micrometer/micrometer-observation/1.13.1/micrometer-observation-1.13.1.jar:/Users/douglasdreer/.m2/repository/io/micrometer/micrometer-commons/1.13.1/micrometer-commons-1.13.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-webmvc/6.1.10/spring-webmvc-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-expression/6.1.10/spring-expression-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-devtools/3.3.1/spring-boot-devtools-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot/3.3.1/spring-boot-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.1/spring-boot-autoconfigure-3.3.1.jar:/Users/douglasdreer/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/Users/douglasdreer/.m2/repository/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.1/spring-boot-starter-test-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-test/3.3.1/spring-boot-test-3.3.1.jar:/Users/douglasdreer/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.1/spring-boot-test-autoconfigure-3.3.1.jar:/Users/douglasdreer/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/douglasdreer/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/douglasdreer/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/douglasdreer/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/Users/douglasdreer/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/Users/douglasdreer/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/douglasdreer/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/Users/douglasdreer/.m2/repository/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.jar:/Users/douglasdreer/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/douglasdreer/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/Users/douglasdreer/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/douglasdreer/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/douglasdreer/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/douglasdreer/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/douglasdreer/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/Users/douglasdreer/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/douglasdreer/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/douglasdreer/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/Users/douglasdreer/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.17/byte-buddy-agent-1.14.17.jar:/Users/douglasdreer/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/douglasdreer/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/Users/douglasdreer/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/Users/douglasdreer/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-core/6.1.10/spring-core-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-jcl/6.1.10/spring-jcl-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/springframework/spring-test/6.1.10/spring-test-6.1.10.jar:/Users/douglasdreer/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/Users/douglasdreer/.m2/repository/org/modelmapper/extensions/modelmapper-spring/3.2.0/modelmapper-spring-3.2.0.jar:/Users/douglasdreer/.m2/repository/org/modelmapper/modelmapper/3.2.0/modelmapper-3.2.0.jar:/Users/douglasdreer/.m2/repository/org/sonarsource/scanner/maven/sonar-maven-plugin/4.0.0.4121/sonar-maven-plugin-4.0.0.4121.jar:/Users/douglasdreer/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar:/Users/douglasdreer/.m2/repository/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.jar:/Users/douglasdreer/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/Users/douglasdreer/.m2/repository/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar:/Users/douglasdreer/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/Users/douglasdreer/.m2/repository/org/jetbrains/annotations/24.1.0/annotations-24.1.0.jar:/Users/douglasdreer/.m2/repository/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar:/Users/douglasdreer/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/douglasdreer"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-04-16"/>
+    <property name="java.home" value="/Users/douglasdreer/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Volumes/HD EXTERNO/projetos/java/Hyper"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Volumes/HD EXTERNO/projetos/java/Hyper/target/surefire/surefirebooter-20240821235736461_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="22.0.1+8-16"/>
+    <property name="user.name" value="douglasdreer"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.3"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/douglasdreer/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/hm/r7bdz8vx17n66hwdvbx7vhkc0000gn/T/"/>
+    <property name="idea.version" value="2024.1.3"/>
+    <property name="sonar.token" value="sqp_fd79f645b74e6d53e23ee2ce16dd699ca9ba6862"/>
+    <property name="com.zaxxer.hikari.pool_number" value="6"/>
+    <property name="java.version" value="22.0.1"/>
+    <property name="user.dir" value="/Volumes/HD EXTERNO/projetos/java/Hyper"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="8573"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="sonar.projectKey" value="Bank-Hyper"/>
+    <property name="java.library.path" value="/Users/douglasdreer/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="22.0.1+8-16"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="66.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[RomStation] "/>
+  </properties>
+  <testcase name="mustReturnSuccessWhenDelete" classname="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="0.012">
+    <system-out><![CDATA[2024-08-21T23:57:50.900-03:00  INFO 8573 --- [RomStation] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.dreerd.bank.hyper.controller.PersonControllerTest]: PersonControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-21T23:57:50.903-03:00  INFO 8573 --- [RomStation] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.dreerd.bank.hyper.HyperApplication for test class br.com.dreerd.bank.hyper.controller.PersonControllerTest
+2024-08-21T23:57:50.907-03:00  INFO 8573 --- [RomStation] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.1)
+
+2024-08-21T23:57:50.927-03:00  INFO 8573 --- [RomStation] [           main] b.c.d.b.h.c.PersonControllerTest         : Starting PersonControllerTest using Java 22.0.1 with PID 8573 (started by douglasdreer in /Volumes/HD EXTERNO/projetos/java/Hyper)
+2024-08-21T23:57:50.928-03:00  INFO 8573 --- [RomStation] [           main] b.c.d.b.h.c.PersonControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2024-08-21T23:57:51.091-03:00  INFO 8573 --- [RomStation] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-21T23:57:51.109-03:00  INFO 8573 --- [RomStation] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 6 JPA repository interfaces.
+2024-08-21T23:57:51.275-03:00  INFO 8573 --- [RomStation] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-21T23:57:51.277-03:00  INFO 8573 --- [RomStation] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-21T23:57:51.285-03:00  INFO 8573 --- [RomStation] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-21T23:57:51.285-03:00  INFO 8573 --- [RomStation] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2024-08-21T23:57:51.313-03:00  INFO 8573 --- [RomStation] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@23a766bd
+2024-08-21T23:57:51.314-03:00  INFO 8573 --- [RomStation] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2024-08-21T23:57:51.316-03:00  WARN 8573 --- [RomStation] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-21T23:57:51.534-03:00  INFO 8573 --- [RomStation] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-21T23:57:51.595-03:00  INFO 8573 --- [RomStation] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-21T23:57:51.742-03:00  WARN 8573 --- [RomStation] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-21T23:57:51.939-03:00  INFO 8573 --- [RomStation] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-08-21T23:57:51.940-03:00  INFO 8573 --- [RomStation] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-08-21T23:57:51.941-03:00  INFO 8573 --- [RomStation] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-08-21T23:57:51.958-03:00  INFO 8573 --- [RomStation] [           main] b.c.d.b.h.c.PersonControllerTest         : Started PersonControllerTest in 1.052 seconds (process running for 15.417)
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /persons/4cbb1baf-e7b8-4cb9-840c-9da028eeaf89
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8"]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.dreerd.bank.hyper.controller.PersonController
+           Method = br.com.dreerd.bank.hyper.controller.PersonController#delete(UUID)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"text/plain;charset=UTF-8", Content-Length:"20"]
+     Content type = text/plain;charset=UTF-8
+             Body = Deleted successfully
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="mustReturnBusinessExceptionNotFoundWhenDelete" classname="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="0.011">
+    <system-out><![CDATA[
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /persons/e3815887-2cce-4839-94f2-6d1646893829
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8"]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.dreerd.bank.hyper.controller.PersonController
+           Method = br.com.dreerd.bank.hyper.controller.PersonController#delete(UUID)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = br.com.dreerd.bank.hyper.exception.BusinessException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"localDateTime":"2024-08-21T23:57:51.982429","code":"404","status":"INFO","details":"Person doesn't found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="mustReturnBusinessExceptionNotFoundWhenFindById" classname="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="0.007">
+    <system-out><![CDATA[2024-08-21T23:57:51.994-03:00  INFO 8573 --- [RomStation] [           main] b.c.d.b.h.c.common.BaseController        : Person doesn't found
+]]></system-out>
+  </testcase>
+  <testcase name="mustReturnBusinessExceptionInternalErrorWhenSave" classname="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="0.016">
+    <system-out><![CDATA[
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /persons
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"1187"]
+             Body = {
+  "id" : "c79044f2-eada-4a83-b77b-c6d5659fa509",
+  "name" : "John",
+  "surname" : "Doe",
+  "contacts" : [ {
+    "id" : "cda54c52-27b9-4479-892f-4204b561b918",
+    "type" : "EMAIL",
+    "value" : "your_name@email.com",
+    "createdAt" : [ 2024, 8, 21, 23, 57, 52, 369000 ],
+    "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 372000 ],
+    "active" : true,
+    "main" : true
+  } ],
+  "addresses" : [ {
+    "id" : "706a0f62-281e-4fb0-8f2a-1affd18383fa",
+    "addressType" : "BUSINESS",
+    "street" : "767 5th Ave",
+    "number" : "",
+    "complement" : "",
+    "neighborhood" : "",
+    "city" : "New York",
+    "state" : "NY",
+    "postalCode" : "10153",
+    "country" : "US",
+    "createdAt" : [ 2024, 8, 21, 23, 57, 52, 447000 ],
+    "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 448000 ],
+    "active" : true,
+    "main" : true
+  } ],
+  "documents" : [ {
+    "id" : "97468d64-2e08-40ff-b4bb-49ea6a405b77",
+    "documentType" : "CPF",
+    "value" : "123.456.789-00",
+    "createdAt" : null,
+    "updatedAt" : null,
+    "active" : true
+  } ],
+  "birthday" : [ 2024, 8, 21 ],
+  "createdAt" : [ 2024, 8, 21, 23, 57, 52, 503000 ],
+  "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 503000 ],
+  "active" : true
+}
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.dreerd.bank.hyper.controller.PersonController
+           Method = br.com.dreerd.bank.hyper.controller.PersonController#save(BaseModel, HttpServletRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = br.com.dreerd.bank.hyper.exception.BusinessException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"localDateTime":"2024-08-21T23:57:52.010453","code":"500","status":"ERROR","details":"Not has possible save operation"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="mustReturnSuccessWhenEdit" classname="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="0.023">
+    <system-out><![CDATA[
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /persons/857df34c-f4c9-4fac-96f8-950aedbe3ecc
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"1199"]
+             Body = {
+  "id" : "857df34c-f4c9-4fac-96f8-950aedbe3ecc",
+  "name" : "John",
+  "surname" : "Doe",
+  "contacts" : [ {
+    "id" : "81788178-3d07-402e-b13e-933926e57058",
+    "type" : "EMAIL",
+    "value" : "your_name@email.com",
+    "createdAt" : [ 2024, 8, 21, 23, 57, 52, 18309000 ],
+    "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 18312000 ],
+    "active" : true,
+    "main" : true
+  } ],
+  "addresses" : [ {
+    "id" : "98108789-b165-49bf-a5c4-20c0c1b996ec",
+    "addressType" : "BUSINESS",
+    "street" : "767 5th Ave",
+    "number" : "",
+    "complement" : "",
+    "neighborhood" : "",
+    "city" : "New York",
+    "state" : "NY",
+    "postalCode" : "10153",
+    "country" : "US",
+    "createdAt" : [ 2024, 8, 21, 23, 57, 52, 18362000 ],
+    "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 18362000 ],
+    "active" : true,
+    "main" : true
+  } ],
+  "documents" : [ {
+    "id" : "a4fb3350-fc87-4579-b0b3-6cfb0179d396",
+    "documentType" : "CPF",
+    "value" : "123.456.789-00",
+    "createdAt" : null,
+    "updatedAt" : null,
+    "active" : true
+  } ],
+  "birthday" : [ 2024, 8, 21 ],
+  "createdAt" : [ 2024, 8, 21, 23, 57, 52, 18425000 ],
+  "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 18426000 ],
+  "active" : true
+}
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.dreerd.bank.hyper.controller.PersonController
+           Method = br.com.dreerd.bank.hyper.controller.PersonController#edit(UUID, BaseModel)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"id":"857df34c-f4c9-4fac-96f8-950aedbe3ecc","name":"John","surname":"Doe","contacts":[{"id":"81788178-3d07-402e-b13e-933926e57058","type":"EMAIL","value":"your_name@email.com","createdAt":"2024-08-21T23:57:52.018309","updatedAt":"2024-08-22T04:57:52.018312","active":true,"main":true}],"addresses":[{"id":"98108789-b165-49bf-a5c4-20c0c1b996ec","addressType":"BUSINESS","street":"767 5th Ave","number":"","complement":"","neighborhood":"","city":"New York","state":"NY","postalCode":"10153","country":"US","createdAt":"2024-08-21T23:57:52.018362","updatedAt":"2024-08-22T04:57:52.018362","active":true,"main":true}],"documents":[{"id":"a4fb3350-fc87-4579-b0b3-6cfb0179d396","documentType":"CPF","value":"123.456.789-00","createdAt":null,"updatedAt":null,"active":true}],"birthday":"2024-08-21","createdAt":"2024-08-21T23:57:52.018425","updatedAt":"2024-08-22T04:57:52.018426","active":true}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="mustReturnSuccessWhenList" classname="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="0.01"/>
+  <testcase name="mustReturnSuccessWhenSave" classname="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="0.01">
+    <system-out><![CDATA[
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /persons
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"1199"]
+             Body = {
+  "id" : "6de003ab-9a03-4563-b64a-5429241f2ae8",
+  "name" : "John",
+  "surname" : "Doe",
+  "contacts" : [ {
+    "id" : "bab3b938-a649-40a5-9ed1-4f82d02a4f68",
+    "type" : "EMAIL",
+    "value" : "your_name@email.com",
+    "createdAt" : [ 2024, 8, 21, 23, 57, 52, 55590000 ],
+    "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 55594000 ],
+    "active" : true,
+    "main" : true
+  } ],
+  "addresses" : [ {
+    "id" : "b2d24ec7-882e-4172-94e9-5e9bc5cb4423",
+    "addressType" : "BUSINESS",
+    "street" : "767 5th Ave",
+    "number" : "",
+    "complement" : "",
+    "neighborhood" : "",
+    "city" : "New York",
+    "state" : "NY",
+    "postalCode" : "10153",
+    "country" : "US",
+    "createdAt" : [ 2024, 8, 21, 23, 57, 52, 55651000 ],
+    "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 55651000 ],
+    "active" : true,
+    "main" : true
+  } ],
+  "documents" : [ {
+    "id" : "753a6d8d-0fdf-4f10-88a8-74a003c2d161",
+    "documentType" : "CPF",
+    "value" : "123.456.789-00",
+    "createdAt" : null,
+    "updatedAt" : null,
+    "active" : true
+  } ],
+  "birthday" : [ 2024, 8, 21 ],
+  "createdAt" : [ 2024, 8, 21, 23, 57, 52, 55691000 ],
+  "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 55691000 ],
+  "active" : true
+}
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.dreerd.bank.hyper.controller.PersonController
+           Method = br.com.dreerd.bank.hyper.controller.PersonController#save(BaseModel, HttpServletRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Location:"http://localhost/persons/6de003ab-9a03-4563-b64a-5429241f2ae8", Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"id":"6de003ab-9a03-4563-b64a-5429241f2ae8","name":"John","surname":"Doe","contacts":[{"id":"bab3b938-a649-40a5-9ed1-4f82d02a4f68","type":"EMAIL","value":"your_name@email.com","createdAt":"2024-08-21T23:57:52.05559","updatedAt":"2024-08-22T04:57:52.055594","active":true,"main":true}],"addresses":[{"id":"b2d24ec7-882e-4172-94e9-5e9bc5cb4423","addressType":"BUSINESS","street":"767 5th Ave","number":"","complement":"","neighborhood":"","city":"New York","state":"NY","postalCode":"10153","country":"US","createdAt":"2024-08-21T23:57:52.055651","updatedAt":"2024-08-22T04:57:52.055651","active":true,"main":true}],"documents":[{"id":"753a6d8d-0fdf-4f10-88a8-74a003c2d161","documentType":"CPF","value":"123.456.789-00","createdAt":null,"updatedAt":null,"active":true}],"birthday":"2024-08-21","createdAt":"2024-08-21T23:57:52.055691","updatedAt":"2024-08-22T04:57:52.055691","active":true}
+    Forwarded URL = null
+   Redirected URL = http://localhost/persons/6de003ab-9a03-4563-b64a-5429241f2ae8
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="mustReturnSuccessWhenFindById" classname="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="0.006"/>
+  <testcase name="mustReturnBusinessExceptionNotFoundWhenEdit" classname="br.com.dreerd.bank.hyper.controller.PersonControllerTest" time="0.008">
+    <system-out><![CDATA[
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /persons/2c84ce3f-8229-4aa9-a2d2-101b6e6cc818
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"1199"]
+             Body = {
+  "id" : "2c84ce3f-8229-4aa9-a2d2-101b6e6cc818",
+  "name" : "John",
+  "surname" : "Doe",
+  "contacts" : [ {
+    "id" : "5cec10ef-1235-4492-bc7f-976b06ead875",
+    "type" : "EMAIL",
+    "value" : "your_name@email.com",
+    "createdAt" : [ 2024, 8, 21, 23, 57, 52, 73015000 ],
+    "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 73019000 ],
+    "active" : true,
+    "main" : true
+  } ],
+  "addresses" : [ {
+    "id" : "a1474eed-3313-4058-a4c3-a0793edb1c55",
+    "addressType" : "BUSINESS",
+    "street" : "767 5th Ave",
+    "number" : "",
+    "complement" : "",
+    "neighborhood" : "",
+    "city" : "New York",
+    "state" : "NY",
+    "postalCode" : "10153",
+    "country" : "US",
+    "createdAt" : [ 2024, 8, 21, 23, 57, 52, 73076000 ],
+    "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 73076000 ],
+    "active" : true,
+    "main" : true
+  } ],
+  "documents" : [ {
+    "id" : "1b3ae3e2-8191-43d2-bac2-e50b9e1cbe61",
+    "documentType" : "CPF",
+    "value" : "123.456.789-00",
+    "createdAt" : null,
+    "updatedAt" : null,
+    "active" : true
+  } ],
+  "birthday" : [ 2024, 8, 21 ],
+  "createdAt" : [ 2024, 8, 21, 23, 57, 52, 73119000 ],
+  "updatedAt" : [ 2024, 8, 22, 4, 57, 52, 73119000 ],
+  "active" : true
+}
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.dreerd.bank.hyper.controller.PersonController
+           Method = br.com.dreerd.bank.hyper.controller.PersonController#edit(UUID, BaseModel)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = br.com.dreerd.bank.hyper.exception.BusinessException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"localDateTime":"2024-08-21T23:57:52.075809","code":"404","status":"INFO","details":"Person doesn't found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+</testsuite>

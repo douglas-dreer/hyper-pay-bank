@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DocumentCNPJ.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hyper</a> &gt; <a href="index.source.html" class="el_package">br.com.dreerd.bank.hyper.utility</a> &gt; <span class="el_source">DocumentCNPJ.java</span></div><h1>DocumentCNPJ.java</h1><pre class="source lang-java linenums">package br.com.dreerd.bank.hyper.utility;
+
+import br.com.dreerd.bank.hyper.exception.DocumentException;
+import lombok.extern.log4j.Log4j2;
+
+import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+<span class="fc" id="L11">@Log4j2</span>
+<span class="nc" id="L12">public class DocumentCNPJ {</span>
+<span class="fc" id="L13">    private static final Pattern CNPJ_PATTERN = Pattern.compile(&quot;\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}&quot;);</span>
+
+<span class="fc" id="L15">    private static final Set&lt;String&gt; BLACKLIST = generateBlacklist();</span>
+
+    public static boolean isValidCNPJ(String cnpj) {
+<span class="pc bpc" id="L18" title="2 of 4 branches missed.">        if (cnpj == null || cnpj.isBlank()) {</span>
+<span class="nc" id="L19">            return false;</span>
+        }
+
+        try {
+<span class="fc" id="L23">            String cleanedCnpj = cleanCNPJ(cnpj);</span>
+
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">            if (BLACKLIST.contains(cleanedCnpj)) {</span>
+<span class="nc" id="L26">                return false;</span>
+            }
+
+<span class="fc bfc" id="L29" title="All 2 branches covered.">            if (cleanedCnpj.length() != 14) {</span>
+<span class="fc" id="L30">                return false;</span>
+            }
+
+<span class="fc" id="L33">            return isValidDigits(cleanedCnpj);</span>
+
+<span class="nc" id="L35">        } catch (Exception e) {</span>
+<span class="nc" id="L36">            throw new DocumentException(cnpj, &quot;CNPJ&quot;, &quot;Error validating CNPJ: &quot; + e.getMessage(), e);</span>
+        }
+    }
+
+    private static String cleanCNPJ(String cnpj) {
+<span class="fc" id="L41">        return cnpj.replaceAll(&quot;\\D&quot;, &quot;&quot;);</span>
+    }
+
+    private static boolean isValidDigits(String cnpj) {
+<span class="fc" id="L45">        int firstDigit = calculateDigit(cnpj, 12);</span>
+<span class="fc" id="L46">        int secondDigit = calculateDigit(cnpj, 13);</span>
+
+<span class="pc bpc" id="L48" title="2 of 4 branches missed.">        return cnpj.charAt(12) == (char) (firstDigit + '0') &amp;&amp; cnpj.charAt(13) == (char) (secondDigit + '0');</span>
+    }
+
+    private static int calculateDigit(String cnpj, int length) {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        int[] weights = length == 12 ? new int[]{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2} : new int[]{6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};</span>
+<span class="fc" id="L53">        int sum = 0;</span>
+
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L56">            sum += (cnpj.charAt(i) - '0') * weights[i];</span>
+        }
+
+<span class="fc" id="L59">        int remainder = sum % 11;</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">        return remainder &lt; 2 ? 0 : 11 - remainder;</span>
+    }
+
+    private static Set&lt;String&gt; generateBlacklist() {
+<span class="fc" id="L64">        return IntStream.rangeClosed(0, 9)</span>
+<span class="fc" id="L65">                .mapToObj(i -&gt; String.format(&quot;%02d%03d%03d0001%02d&quot;, i, i, i, i))</span>
+<span class="fc" id="L66">                .collect(Collectors.toSet());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

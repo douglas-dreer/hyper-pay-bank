@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hyper</a> &gt; <a href="index.source.html" class="el_package">br.com.dreerd.bank.hyper.controller.common</a> &gt; <span class="el_source">BaseController.java</span></div><h1>BaseController.java</h1><pre class="source lang-java linenums">package br.com.dreerd.bank.hyper.controller.common;
+
+import br.com.dreerd.bank.hyper.entity.common.BaseEntity;
+import br.com.dreerd.bank.hyper.exception.BusinessException;
+import br.com.dreerd.bank.hyper.model.common.BaseModel;
+import br.com.dreerd.bank.hyper.service.common.BaseService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.UUID;
+
+<span class="fc" id="L20">@Log4j2</span>
+public abstract class BaseController&lt;T extends BaseEntity, M extends BaseModel, S extends BaseService&lt;T, M&gt;&gt; {
+    protected S service;
+
+<span class="fc" id="L24">    protected BaseController(S service) {</span>
+<span class="fc" id="L25">        this.service = service;</span>
+<span class="fc" id="L26">    }</span>
+
+    @GetMapping
+    public ResponseEntity&lt;List&lt;M&gt;&gt; list() {
+<span class="fc" id="L30">        return ResponseEntity.ok(service.list());</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;M&gt; findById(@PathVariable(&quot;id&quot;) UUID id) {
+        try {
+<span class="fc" id="L36">            return ResponseEntity.ok(service.findById(id));</span>
+<span class="fc" id="L37">        } catch (BusinessException e) {</span>
+<span class="fc" id="L38">            log.info(e.getMessage());</span>
+<span class="fc" id="L39">            throw e;</span>
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity&lt;M&gt; save(@Validated @RequestBody M model, HttpServletRequest request) throws URISyntaxException {
+        try {
+<span class="fc" id="L46">            M savedEntity = service.save(model);</span>
+<span class="fc" id="L47">            URI location = new URI(String.format(&quot;%s/%s&quot;, request.getRequestURL(), savedEntity.getId()));</span>
+<span class="fc" id="L48">            return ResponseEntity.created(location).body(savedEntity);</span>
+<span class="fc" id="L49">        } catch (BusinessException e) {</span>
+<span class="fc" id="L50">            throw e;</span>
+        }
+    }
+
+    @PutMapping(&quot;/{uuid}&quot;)
+    public ResponseEntity&lt;M&gt; edit(@PathVariable(&quot;uuid&quot;) UUID uuid, @Validated @RequestBody M model) throws JsonProcessingException {
+        try {
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            if (!model.getId().equals(uuid)) {</span>
+<span class="fc" id="L58">                throw new BusinessException(HttpStatus.BAD_REQUEST, &quot;Identification not equals&quot;);</span>
+            }
+
+<span class="fc" id="L61">            M editedEntity = service.edit(model);</span>
+<span class="fc" id="L62">            return ResponseEntity.ok(editedEntity);</span>
+<span class="fc" id="L63">        } catch (BusinessException e) {</span>
+<span class="fc" id="L64">            throw e;</span>
+        }
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;String&gt; delete(@PathVariable(&quot;id&quot;) UUID id) throws JsonProcessingException {
+        try {
+<span class="fc" id="L71">            service.delete(id);</span>
+<span class="fc" id="L72">            return ResponseEntity.ok(&quot;Deleted successfully&quot;);</span>
+<span class="fc" id="L73">        } catch (BusinessException e) {</span>
+<span class="fc" id="L74">            throw e;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

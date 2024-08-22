@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Person.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hyper</a> &gt; <a href="index.source.html" class="el_package">br.com.dreerd.bank.hyper.entity</a> &gt; <span class="el_source">Person.java</span></div><h1>Person.java</h1><pre class="source lang-java linenums">package br.com.dreerd.bank.hyper.entity;
+
+import br.com.dreerd.bank.hyper.entity.common.BaseEntity;
+import br.com.dreerd.bank.hyper.model.AddressDTO;
+import br.com.dreerd.bank.hyper.model.ContactDTO;
+import br.com.dreerd.bank.hyper.model.DocumentDTO;
+import br.com.dreerd.bank.hyper.model.PersonDTO;
+import br.com.dreerd.bank.hyper.utility.Converter;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
+
+@Entity
+@Table(name = &quot;TBL0001_PERSONS&quot;)
+<span class="nc" id="L22">@AllArgsConstructor</span>
+<span class="pc" id="L23">@Data</span>
+<span class="pc bpc" id="L24" title="83 of 84 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
+public class Person extends BaseEntity&lt;PersonDTO&gt; {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+<span class="fc" id="L28">    private UUID id;</span>
+
+    @Column(nullable = false)
+<span class="fc" id="L31">    private String name;</span>
+    @Column(nullable = false)
+<span class="fc" id="L33">    private String surname;</span>
+
+<span class="pc" id="L35">    @OneToMany(cascade = CascadeType.ALL)</span>
+    @JoinColumn(name = &quot;person_id&quot;)
+<span class="fc" id="L37">    private List&lt;Document&gt; documents = new ArrayList&lt;&gt;();</span>
+
+<span class="pc" id="L39">    @OneToMany(cascade = CascadeType.ALL)</span>
+    @JoinColumn(name = &quot;person_id&quot;)
+<span class="fc" id="L41">    private List&lt;Contact&gt; contacts = new ArrayList&lt;&gt;();</span>
+
+<span class="pc" id="L43">    @OneToMany(cascade = CascadeType.ALL)</span>
+    @JoinColumn(name = &quot;person_id&quot;)
+<span class="fc" id="L45">    private List&lt;Address&gt; addresses = new ArrayList&lt;&gt;();</span>
+
+    @Column
+    @Temporal(TemporalType.DATE)
+<span class="fc" id="L49">    private LocalDate birthday;</span>
+
+    @CreationTimestamp
+<span class="fc" id="L52">    private LocalDateTime createdAt;</span>
+    @UpdateTimestamp
+<span class="fc" id="L54">    private LocalDateTime updatedAt;</span>
+
+    @Column(name = &quot;is_active&quot;)
+<span class="fc" id="L57">    private boolean isActive;</span>
+
+    public Person() {
+<span class="fc" id="L60">        super(PersonDTO.class);</span>
+<span class="fc" id="L61">    }</span>
+
+    public void updateFields(PersonDTO newItem) {
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        this.name = !Objects.equals(this.name, newItem.getName()) ? newItem.getName() : this.name;</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        this.surname = !Objects.equals(this.surname, newItem.getSurname()) ? newItem.getSurname() : this.surname;</span>
+<span class="fc" id="L66">        this.contacts = mergeContacts(newItem.getContacts());</span>
+<span class="fc" id="L67">        this.addresses = mergeAddresses(newItem.getAddresses());</span>
+<span class="fc" id="L68">        this.documents = mergeDocuments(newItem.getDocuments());</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        this.birthday = this.birthday != newItem.getBirthday() ? newItem.getBirthday() : this.birthday;</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        this.isActive = this.isActive != newItem.isActive() ? newItem.isActive() : this.isActive;</span>
+<span class="fc" id="L71">    }</span>
+
+    private List&lt;Document&gt; mergeDocuments(List&lt;DocumentDTO&gt; documents) {
+<span class="fc" id="L74">        Set&lt;Document&gt; documentSet = new HashSet&lt;&gt;(this.documents);</span>
+<span class="fc" id="L75">        documentSet.addAll(documents.stream().map(DocumentDTO::toEntity).toList());</span>
+<span class="fc" id="L76">        return new ArrayList&lt;&gt;(documentSet);</span>
+    }
+
+    private List&lt;Contact&gt; mergeContacts(List&lt;ContactDTO&gt; contacts) {
+<span class="fc" id="L80">        Set&lt;Contact&gt; contactSet = new HashSet&lt;&gt;(this.contacts);</span>
+<span class="fc" id="L81">        contactSet.addAll(contacts.stream().map(ContactDTO::toEntity).toList());</span>
+<span class="fc" id="L82">        return new ArrayList&lt;&gt;(contactSet);</span>
+    }
+
+    private List&lt;Address&gt; mergeAddresses(List&lt;AddressDTO&gt; addresses) {
+<span class="fc" id="L86">        Set&lt;Address&gt; addressSet = new HashSet&lt;&gt;(this.addresses);</span>
+<span class="fc" id="L87">        addressSet.addAll(addresses.stream().map(AddressDTO::toEntity).toList());</span>
+<span class="fc" id="L88">        return new ArrayList&lt;&gt;(addressSet);</span>
+    }
+
+    @Override
+    public PersonDTO toDTO() {
+<span class="fc" id="L93">        return Converter.convertTo(this, PersonDTO.class);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

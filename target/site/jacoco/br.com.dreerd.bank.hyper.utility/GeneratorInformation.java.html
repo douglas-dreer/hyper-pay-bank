@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GeneratorInformation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hyper</a> &gt; <a href="index.source.html" class="el_package">br.com.dreerd.bank.hyper.utility</a> &gt; <span class="el_source">GeneratorInformation.java</span></div><h1>GeneratorInformation.java</h1><pre class="source lang-java linenums">package br.com.dreerd.bank.hyper.utility;
+
+
+import br.com.dreerd.bank.hyper.entity.*;
+import br.com.dreerd.bank.hyper.enums.AddressType;
+import br.com.dreerd.bank.hyper.enums.ContactType;
+import br.com.dreerd.bank.hyper.enums.DocumentType;
+import br.com.dreerd.bank.hyper.enums.TransitionType;
+import br.com.dreerd.bank.hyper.model.*;
+import lombok.extern.log4j.Log4j2;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+
+<span class="fc" id="L19">@Log4j2</span>
+public class GeneratorInformation {
+<span class="fc" id="L21">    public GeneratorInformation() {</span>
+<span class="fc" id="L22">    }</span>
+
+    public static &lt;T&gt; T createContact(Class&lt;T&gt; clazz) {
+<span class="fc" id="L25">        ContactDTO dto = ContactDTO.builder()</span>
+<span class="fc" id="L26">                .id(UUID.randomUUID())</span>
+<span class="fc" id="L27">                .type(ContactType.EMAIL)</span>
+<span class="fc" id="L28">                .value(&quot;your_name@email.com&quot;)</span>
+<span class="fc" id="L29">                .createdAt(LocalDateTime.now())</span>
+<span class="fc" id="L30">                .updatedAt(LocalDateTime.now().plusHours(5))</span>
+<span class="fc" id="L31">                .isMain(true)</span>
+<span class="fc" id="L32">                .isActive(true)</span>
+<span class="fc" id="L33">                .build();</span>
+<span class="fc" id="L34">        return assignBasedOnClass(dto, clazz, ContactDTO.class, Contact.class);</span>
+    }
+
+
+    public static &lt;T&gt; T createAddress(Class&lt;T&gt; clazz) {
+<span class="fc" id="L39">        AddressDTO dto = AddressDTO.builder()</span>
+<span class="fc" id="L40">                .id(UUID.randomUUID())</span>
+<span class="fc" id="L41">                .addressType(AddressType.BUSINESS)</span>
+<span class="fc" id="L42">                .street(&quot;767 5th Ave&quot;)</span>
+<span class="fc" id="L43">                .number(&quot;&quot;)</span>
+<span class="fc" id="L44">                .complement(&quot;&quot;)</span>
+<span class="fc" id="L45">                .neighborhood(&quot;&quot;)</span>
+<span class="fc" id="L46">                .city(&quot;New York&quot;)</span>
+<span class="fc" id="L47">                .state(&quot;NY&quot;)</span>
+<span class="fc" id="L48">                .postalCode(&quot;10153&quot;)</span>
+<span class="fc" id="L49">                .country(&quot;US&quot;)</span>
+<span class="fc" id="L50">                .createdAt(LocalDateTime.now())</span>
+<span class="fc" id="L51">                .updatedAt(LocalDateTime.now().plusHours(5))</span>
+<span class="fc" id="L52">                .isActive(true)</span>
+<span class="fc" id="L53">                .isMain(true)</span>
+<span class="fc" id="L54">                .build();</span>
+<span class="fc" id="L55">        return assignBasedOnClass(dto, clazz, AddressDTO.class, Address.class);</span>
+    }
+
+    public static &lt;T&gt; T createPerson(Class&lt;T&gt; clazz) {
+<span class="fc" id="L59">        List&lt;ContactDTO&gt; contacts = Collections.singletonList(createContact(ContactDTO.class));</span>
+<span class="fc" id="L60">        List&lt;AddressDTO&gt; addresses = Collections.singletonList(createAddress(AddressDTO.class));</span>
+<span class="fc" id="L61">        List&lt;DocumentDTO&gt; documents = Collections.singletonList(createDocument(DocumentDTO.class));</span>
+<span class="fc" id="L62">        PersonDTO dto = PersonDTO.builder()</span>
+<span class="fc" id="L63">                .id(UUID.randomUUID())</span>
+<span class="fc" id="L64">                .name(&quot;John&quot;)</span>
+<span class="fc" id="L65">                .surname(&quot;Doe&quot;)</span>
+<span class="fc" id="L66">                .addresses(addresses)</span>
+<span class="fc" id="L67">                .contacts(contacts)</span>
+<span class="fc" id="L68">                .documents(documents)</span>
+<span class="fc" id="L69">                .birthday(LocalDate.now())</span>
+<span class="fc" id="L70">                .createdAt(LocalDateTime.now())</span>
+<span class="fc" id="L71">                .updatedAt(LocalDateTime.now().plusHours(5))</span>
+<span class="fc" id="L72">                .isActive(true)</span>
+<span class="fc" id="L73">                .build();</span>
+<span class="fc" id="L74">        return assignBasedOnClass(dto, clazz, PersonDTO.class, Person.class);</span>
+    }
+
+    public static &lt;T&gt; T createDocument(Class&lt;T&gt; clazz) {
+<span class="fc" id="L78">        DocumentDTO dto = DocumentDTO.builder()</span>
+<span class="fc" id="L79">                .id(UUID.randomUUID())</span>
+<span class="fc" id="L80">                .documentType(DocumentType.CPF)</span>
+<span class="fc" id="L81">                .value(&quot;123.456.789-00&quot;)</span>
+<span class="fc" id="L82">                .isActive(true)</span>
+<span class="fc" id="L83">                .build();</span>
+<span class="fc" id="L84">        return assignBasedOnClass(dto, clazz, DocumentDTO.class, Document.class);</span>
+    }
+
+    public static &lt;T&gt; T createAccount(Class&lt;T&gt; clazz) {
+<span class="fc" id="L88">        PersonDTO personDTO = createPerson(PersonDTO.class);</span>
+<span class="fc" id="L89">        AccountDTO dto = AccountDTO.builder()</span>
+<span class="fc" id="L90">                .id(UUID.randomUUID())</span>
+<span class="fc" id="L91">                .number(1L)</span>
+<span class="fc" id="L92">                .person(personDTO)</span>
+<span class="fc" id="L93">                .balance(new BigDecimal(&quot;100000&quot;))</span>
+<span class="fc" id="L94">                .createdAt(LocalDateTime.now())</span>
+<span class="fc" id="L95">                .updatedAt(LocalDateTime.now().plusHours(5))</span>
+<span class="fc" id="L96">                .isActive(true)</span>
+<span class="fc" id="L97">                .build();</span>
+<span class="fc" id="L98">        return assignBasedOnClass(dto, clazz, AccountDTO.class, Account.class);</span>
+    }
+
+    public static BankTransitionDTO createBankTransition() {
+<span class="fc" id="L102">        return BankTransitionDTO.builder()</span>
+<span class="fc" id="L103">                .id(UUID.randomUUID())</span>
+<span class="fc" id="L104">                .originAccountId(UUID.randomUUID())</span>
+<span class="fc" id="L105">                .destinationAccountId(UUID.randomUUID())</span>
+<span class="fc" id="L106">                .transitionType(TransitionType.DEPOSIT)</span>
+<span class="fc" id="L107">                .amount(new BigDecimal(&quot;100&quot;))</span>
+<span class="fc" id="L108">                .build();</span>
+
+    }
+
+    public static &lt;T&gt; T createAccountTransition(Class&lt;T&gt; clazz) {
+<span class="fc" id="L113">        AccountDTO accountDTO = createAccount(AccountDTO.class);</span>
+        AccountTransationDTO dto = AccountTransationDTO
+<span class="fc" id="L115">                .builder()</span>
+<span class="fc" id="L116">                .id(UUID.randomUUID())</span>
+<span class="fc" id="L117">                .account(accountDTO)</span>
+<span class="fc" id="L118">                .transitionType(TransitionType.DEPOSIT)</span>
+<span class="fc" id="L119">                .amount(new BigDecimal(&quot;10.75&quot;))</span>
+<span class="fc" id="L120">                .previousBalance(new BigDecimal(&quot;23.15&quot;))</span>
+<span class="fc" id="L121">                .balance(new BigDecimal(&quot;153.42&quot;))</span>
+<span class="fc" id="L122">                .createdAt(LocalDateTime.now())</span>
+<span class="fc" id="L123">                .build();</span>
+<span class="fc" id="L124">        return assignBasedOnClass(dto, clazz, AccountTransationDTO.class, AccountTransation.class);</span>
+    }
+    private static &lt;T, D, E&gt; T assignBasedOnClass(D dto, Class&lt;T&gt; targetClass, Class&lt;D&gt; dtoClass, Class&lt;E&gt; entityClass) {
+<span class="fc" id="L127">        final String msgInfo = String.format(&quot;Assigning class: { targetClass: %s, dtoClass: %s, entityClass: %s }&quot;,</span>
+<span class="fc" id="L128">                targetClass.getSimpleName(),</span>
+<span class="fc" id="L129">                dtoClass.getSimpleName(),</span>
+<span class="fc" id="L130">                entityClass.getSimpleName()</span>
+        );
+        try {
+
+
+<span class="fc bfc" id="L135" title="All 4 branches covered.">            if (!targetClass.isAssignableFrom(dtoClass) &amp;&amp; !targetClass.isAssignableFrom(entityClass)) {</span>
+<span class="fc" id="L136">                throw new IllegalArgumentException(&quot;Invalid class type&quot;);</span>
+            }
+<span class="fc" id="L138">            return Converter.convertTo(dto, targetClass);</span>
+<span class="fc" id="L139">        } catch (Exception e) {</span>
+<span class="fc" id="L140">            log.info(msgInfo);</span>
+<span class="fc" id="L141">            throw new IllegalArgumentException(&quot;Error converting class types&quot;, e);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
